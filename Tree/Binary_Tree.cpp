@@ -24,6 +24,30 @@ node* buildTree(){
   return root;
 };
 
+node* buildTreeLevelOrder() {
+    int r;
+    cin>>r;
+    Node* root = new Node(r);
+    queue<Node*>q;
+    q.push(root);
+
+    while(!q.empty()) {
+        Node* child = q.front();
+        q.pop();
+        int a,b;
+        cin>>a>>b;
+        if(a!=-1) {
+            child->left = new Node(a);
+            q.push(child->left);
+        }
+        if(b!=-1) {
+            child->right = new Node(b);
+            q.push(child->right);
+        }
+    }
+    return root;
+}
+
 void preOrder(node*root){
   if(root==nullptr)
   return;
