@@ -3,30 +3,30 @@ using namespace std;
 
 class node{
 public:
-  int data;
-  node*left;
-  node*right;
-  node(int d){
-    data=d;
-    left=NULL;
-    right=NULL;
-  }
+    int data;
+    node* left;
+    node* right;
+    node(int d){
+      data = d;
+      left = NULL;
+      right = NULL;
+    }
 };
 
 node* buildTree(){
-  int d;
-  cin>>d;
-  if(d==-1)
-  return nullptr;
-  node* root=new node(d);
-  root->left=buildTree();
-  root->right=buildTree();
-  return root;
+    int d;
+    cin >> d;
+    if(d == -1)
+    return nullptr;
+    node* root = new node(d);
+    root->left = buildTree();
+    root->right = buildTree();
+    return root;
 };
 
 node* buildTreeLevelOrder() {
     int r;
-    cin>>r;
+    cin >> r;
     Node* root = new Node(r);
     queue<Node*>q;
     q.push(root);
@@ -34,13 +34,13 @@ node* buildTreeLevelOrder() {
     while(!q.empty()) {
         Node* child = q.front();
         q.pop();
-        int a,b;
-        cin>>a>>b;
-        if(a!=-1) {
+        int a, b;
+        cin >> a >> b;
+        if(a != -1) {
             child->left = new Node(a);
             q.push(child->left);
         }
-        if(b!=-1) {
+        if(b != -1) {
             child->right = new Node(b);
             q.push(child->right);
         }
@@ -49,96 +49,96 @@ node* buildTreeLevelOrder() {
 }
 
 void preOrder(node*root){
-  if(root==nullptr)
-  return;
-  cout<<root->data<<" ";
-  preOrder(root->left);
-  preOrder(root->right);
+    if(root == nullptr)
+    return;
+    cout<< root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
 }
 void inOrder(node* root){
-  if(root==nullptr)
-  return;
-  inOrder(root->left);
-  cout<<root->data<<" ";
-  inOrder(root->right);
+    if( root == nullptr)
+    return;
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
 }
 
 void postOrder(node* root){
-  if(root==nullptr)
+  if(root == nullptr)
   return;
   postOrder(root->left);
   postOrder(root->right);
-  cout<<root->data<<" ";
+  cout << root->data << " ";
 }
 
 //To print the particular nodes of Kth Level in Level Order Traversal
 void printKthLevel(node*root,int k){
-     if(root==nullptr)
+     if(root == nullptr)
      return;
-     if(k==1){
+     if(k == 1){
        cout<<root->data<<" ";
        return;
      }
-     printKthLevel(root->left,k-1);
-     printKthLevel(root->right,k-1);
+     printKthLevel(root->left, k-1);
+     printKthLevel(root->right, k-1);
 }
 
 
 int height(node* root){
-  if(root==nullptr)
-  return 0;
+    if(root == nullptr)
+    return 0;
 
-  int leftHeight=height(root->left);
-  int rightHeight=height(root->right);
-  return 1+max(leftHeight,rightHeight);
+    int leftHeight = height(root->left);
+    int rightHeight = height(root->right);
+    return 1+max(leftHeight, rightHeight);
 }
 
 //To print all Levels
 void LevelOrderTraversal(node* root){
-  int h = height(root);
+    int h = height(root);
 
-  for(int i=1;i<=h;i++)
-  printKthLevel(root,i);
+    for(int i=1;i<=h;i++)
+    printKthLevel(root,i);
 }
 //Level Order Traversal
 void BFS(node* root){
-  queue<node*>q;
-  q.push(root);
-  while(!q.empty()){
-    node* temp=q.front();
-    q.pop();
-    cout<<temp->data<<" ";
-    if(temp->left)
-    q.push(temp->left);
-    if(temp->right)
-    q.push(temp->right);
-  }
-  return;
-}
-
-// To get a newline after each Level Order Traversal (BFS2) using NULL Approach
-void BFSNULL(node* root){
-  queue<node*>q;
-  q.push(root);
-  q.push(NULL);
-  while(!q.empty()){
-    node* temp=q.front();
-    if(temp==nullptr){
-      cout<<endl;
+    queue<node*>q;
+    q.push(root);
+    while(!q.empty()){
+      node* temp = q.front();
       q.pop();
-      if(!q.empty())
-      q.push(nullptr);
-    }
-    else{
-      cout<<temp->data<<" ";
-      q.pop();
+      cout<< temp->data <<" ";
       if(temp->left)
       q.push(temp->left);
       if(temp->right)
       q.push(temp->right);
     }
-  }
-  return;
+    return;
+}
+
+// To get a newline after each Level Order Traversal (BFS2) using NULL Approach
+void BFSNULL(node* root){
+    queue<node*>q;
+    q.push(root);
+    q.push(NULL);
+    while(!q.empty()){
+      node* temp=q.front();
+      if(temp==nullptr){
+        cout<<endl;
+        q.pop();
+        if(!q.empty())
+        q.push(nullptr);
+      }
+      else{
+        cout<<temp->data<<" ";
+        q.pop();
+        if(temp->left)
+        q.push(temp->left);
+        if(temp->right)
+        q.push(temp->right);
+      }
+    }
+    return;
 }
 
 int countNodes(node*root){

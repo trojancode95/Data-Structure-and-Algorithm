@@ -40,6 +40,5 @@ int32_t main() {
 			cin >> hist[i];
 		cout << max_hist_area(hist, n) << endl;
 	}
-
 	return 0;
 }

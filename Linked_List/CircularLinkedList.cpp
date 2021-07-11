@@ -57,6 +57,7 @@ void removeLoop(Node* head) {
 		if (slow == fast)
 			break;
 	}
+	//when cycle starts from the head of the loop
 	if (slow == head) {
 		while (fast->next != slow)
 			fast = fast->next;

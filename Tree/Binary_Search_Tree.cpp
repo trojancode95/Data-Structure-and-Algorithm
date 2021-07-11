@@ -52,7 +52,7 @@ bool SearchInBinarySearchTree(node*root , int data){
       return true;
 
       //Recursively search in left and the right subtree
-      if(data<=root->data)
+      if(data < root->data)
       return SearchInBinarySearchTree(root->left,data);
 
       else
