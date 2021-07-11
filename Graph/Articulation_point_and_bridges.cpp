@@ -12,7 +12,7 @@ using namespace std;
 #define print(v) for(auto x:v) cout<<x<<" "; cout<<endl;
 #define printn(v) for(auto x:v) cout<<x<<endl;
 #define F first
-#define S second
+#define S secon
 #define mp make_pair
 
 const int N = 100005, M = 23;

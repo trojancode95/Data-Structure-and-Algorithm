@@ -1,10 +1,12 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-#define endl "\n"
-#define FASTIO ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+#define endl '\n'
+#define fastio ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 #define mod 1000000007
 #define gcd __gcd
+#define setbit __builtin_popcount
+#define setbitll __builtin_popcount
 
 class Node {
 public:
